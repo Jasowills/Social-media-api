@@ -35,7 +35,7 @@ db.once('open', () => {
 
 // Define routes
 app.use('/api/v1', Routes);
-app.get('/api/v1', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).json({ message: 'Hello World' });
 });
 
