@@ -3,16 +3,12 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  firstName: {
+  fullName: {
     type: String,
     required: true,
     trim: true,
   },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
+
   userName: {
     type: String,
     required: true,
@@ -39,6 +35,15 @@ const userSchema = new Schema({
   },
   profilePicture: {
     type: String, // Assuming the profile picture is stored as a URL
+  },
+  coverPhoto: {
+    type: String, // Assuming the cover photo is stored as a URL
+  },
+  bio: {
+    type: String, // User's bio
+  },
+  location: {
+    type: String, // User's location
   },
   isVerified: {
     type: Boolean,

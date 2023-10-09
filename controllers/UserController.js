@@ -5,7 +5,7 @@ import jwt  from'jsonwebtoken'
 class UserController {
   static async signUp(req, res) {
     try {
-      const { firstName, lastName, userName, isVerified, profilePicture, email, password } = req.body;
+      const { fullName,userName, isVerified, profilePicture, email, password } = req.body;
 
       const existingUser = await User.findOne({ email });
 
@@ -19,8 +19,7 @@ class UserController {
       const hashedPassword = await bcrypt.hash(password, 10);
 
       const newUser = await User.create({
-        firstName,
-        lastName,
+        fullName,
         email,
         userName,
         isVerified,
@@ -42,8 +41,7 @@ class UserController {
         token,
         user: {
           id: newUser.id,
-          firstName: newUser.firstName,
-          lastName: newUser.lastName,
+          fullName: newUser.fullName,
           userName: newUser.userName,
           profilePicture: newUser.profilePicture,
           email: newUser.email,
@@ -97,8 +95,8 @@ class UserController {
         token,
         user: {
           id: user.id,
-          firstName: user.firstName,
-          lastName: user.lastName,
+          fullName: user.fullName,
+        
           userName: user.userName,
           profilePicture: user.profilePicture,
           email: user.email,
